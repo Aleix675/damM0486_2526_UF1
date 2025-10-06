@@ -37,21 +37,21 @@ public class GestioUsuari {
 		}
 		return str;
 	}
-	
+
 	public static void main(String[] args) {
 		Scanner sc = new Scanner(System.in);
 		System.out.println("Benvingut al joc!");
 
 		String nom=validarNom(sc);
 		String contra=validarContrasenya(sc);
-//No abre el archivo, solo crea una referencia a él.
-//Puedes usarlo para saber si el archivo existe, crearlo, borrarlo, obtener su nombre, etc.
+		//No abre el archivo, solo crea una referencia a él.
+		//Puedes usarlo para saber si el archivo existe, crearlo, borrarlo, obtener su nombre, etc.
 		File fitxer = new File(nom+".usr");
 
 		if(fitxer.exists()) {
 			try { 
-//Se usa para leer objetos previamente guardados con ObjectOutputStream.
-//Object obj = ois.readObject(); y luego haces un cast al tipo adecuado:User u = (User) obj;
+				//Se usa para leer objetos previamente guardados con ObjectOutputStream.
+				//Object obj = ois.readObject(); y luego haces un cast al tipo adecuado:User u = (User) obj;
 				ObjectInputStream ois = new ObjectInputStream(new FileInputStream(fitxer));
 				User u = (User) ois.readObject();
 
@@ -74,14 +74,14 @@ public class GestioUsuari {
 			System.out.println("USUARI NO TROBAT.\nVOLS REGISTRARTE? \nPrem ' 0 ' per registrarte i ' 1 ' per cancelar.");
 			elec=sc.nextInt();
 			sc.nextLine();
-			
+
 			if(elec==1) {
 				System.out.println("Cancelant registre...");
 			}else if(elec==0) {
 				System.out.println("Registrant el següent usuari: "+nom);
 				try {
-//Se usa para guardar objetos en un fichero.
-//Debe ir acompañado de FileOutputStream, que se encarga de escribir en el archivo.					
+					//Se usa para guardar objetos en un fichero.
+					//Debe ir acompañado de FileOutputStream, que se encarga de escribir en el archivo.					
 					ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(fitxer));
 					User u = new User(nom,contra);
 					oos.writeObject(u);
