@@ -94,7 +94,6 @@ public class EscriptorRandom {
 			//fitxer.seek(0); elige posicion del archivo al tener archivos de tamaño fijo se necesita calcular la posicion
 			//posicion en concreto int pos=(pos-1)*174; archivo.seek(pos);
 
-				
 				fitxer.seek(pos);
 				fitxer.writeInt(index);
 				writeFixedString(fitxer,nouPais,40);
